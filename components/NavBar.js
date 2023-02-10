@@ -4,13 +4,14 @@ import Link from 'next/link';
 import {
   Navbar, Container, Nav,
 } from 'react-bootstrap';
+import { signOut } from '../utils/auth';
 
 export default function NavBar() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Link passHref href="/">
-          <Navbar.Brand>CHANGE ME</Navbar.Brand>
+          <Navbar.Brand>VisionOfLabor</Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -22,6 +23,9 @@ export default function NavBar() {
             <Link passHref href="/delete-me">
               <Nav.Link>Delete Me</Nav.Link>
             </Link>
+            <button type="button" className="btn btn-danger" onClick={signOut}>
+              Sign Out
+            </button>
           </Nav>
         </Navbar.Collapse>
       </Container>

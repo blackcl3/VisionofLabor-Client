@@ -1,4 +1,8 @@
+import { Button } from 'react-bootstrap';
+import { useAuth } from '../utils/context/authContext';
+
 function Home() {
+  const { user } = useAuth();
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
@@ -9,7 +13,12 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <h1>Welcome Home! </h1>
+      <h1>Welcome {user.full_name}! </h1>
+      {user.household.id ? (
+        <Button>Go to Household</Button>
+      ) : (
+        <Button>Please Create a Household</Button>
+      )}
     </div>
   );
 }
