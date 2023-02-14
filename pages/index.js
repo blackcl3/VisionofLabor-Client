@@ -15,7 +15,7 @@ function Home() {
     >
       <h1>Welcome {user.full_name}! </h1>
       {user.household.id ? (
-        <Button>Go to Household</Button>
+        <Button href={`household/${user.household.id}`}>Go to Household</Button>
       ) : (
         <Button>Please Create a Household</Button>
       )}

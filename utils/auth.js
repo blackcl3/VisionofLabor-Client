@@ -9,11 +9,9 @@ const signIn = () => {
 
 const signOut = () => {
   firebase.auth().signOut();
-  console.warn('signed out');
 };
 
 const checkUser = (uid) => new Promise((resolve, reject) => {
-  console.warn(uid);
   fetch(`${clientCredentials.databaseURL}/checkuser`, {
     method: 'POST',
     body: JSON.stringify({

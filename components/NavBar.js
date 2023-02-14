@@ -5,8 +5,10 @@ import {
   Navbar, Container, Nav,
 } from 'react-bootstrap';
 import { signOut } from '../utils/auth';
+import { useAuth } from '../utils/context/authContext';
 
 export default function NavBar() {
+  const { user } = useAuth();
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -20,9 +22,12 @@ export default function NavBar() {
             <Link passHref href="/">
               <Nav.Link>Home</Nav.Link>
             </Link>
-            <Link passHref href="/delete-me">
-              <Nav.Link>Delete Me</Nav.Link>
-            </Link>
+            {user.household.id ? (
+              <Link passHref href="/household">
+                <Nav.Link>My Household</Nav.Link>
+              </Link>
+            ) : (<></>)}
+
             <button type="button" className="btn btn-danger" onClick={signOut}>
               Sign Out
             </button>

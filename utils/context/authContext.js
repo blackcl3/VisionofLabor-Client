@@ -20,7 +20,6 @@ const AuthProvider = (props) => {
   // null = application initial state, not yet loaded
   // false = user is not logged in, but the app has loaded
   // an object/value = user is logged in
-  console.warn(user);
 
   const updateUser = useMemo(
     () => (uid) => checkUser(uid).then((userInfo) => {
