@@ -10,4 +10,11 @@ const getUsersWithNoHousehold = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getUsersWithNoHousehold;
+const getAllUsers = () => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/users`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
+export { getUsersWithNoHousehold, getAllUsers };

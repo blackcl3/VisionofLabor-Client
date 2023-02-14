@@ -16,4 +16,18 @@ const getSingleHousehold = (householdId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getSingleHousehold;
+const editHousehold = (householdObject) => new Promise((resolve, reject) => {
+  axios
+    .put(`${dbUrl}/household/${householdObject.id}`, householdObject)
+    .then(resolve)
+    .catch(reject);
+});
+
+const createHousehold = (householdObject) => new Promise((resolve, reject) => {
+  axios
+    .post(`${dbUrl}/household`, householdObject)
+    .then(resolve)
+    .catch(reject);
+});
+
+export { getSingleHousehold, editHousehold, createHousehold };
