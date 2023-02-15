@@ -81,14 +81,14 @@ export default function HouseholdForm({ obj, allUsers }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="food-item-form">
-      <h1 className="food-item-form-h1">{obj.id ? 'Edit' : 'Add'} Household</h1>
-      <FormGroup controlId="form.Input1" className="food-item-form-input">
+    <Form onSubmit={handleSubmit} className="item-form">
+      <h1 className="item-form-h1">{obj.id ? 'Edit' : 'Add'} Household</h1>
+      <FormGroup controlId="form.Input1" className="item-form-input">
         <FloatingLabel label="Household Name" className="mb-3">
           <Form.Control type="text" placeholder="Enter Household Name" name="name" value={formInput.name} onChange={handleChange} required />
         </FloatingLabel>
       </FormGroup>
-      <FormGroup controlId="floatingSelect" className="food-item-form-input">
+      <FormGroup controlId="floatingSelect" className="item-form-input">
         <Select aria-label="member select" name="users" value={formInput.users} isMulti options={optionsForSelect} onChange={handleSelect} />
       </FormGroup>
       <div>

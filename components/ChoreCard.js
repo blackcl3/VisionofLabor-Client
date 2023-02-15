@@ -26,7 +26,7 @@ export default function ChoreCard({ obj }) {
         {obj.category?.map((category) => (
           <Button key={category.id}>{category.category.label}</Button>
         ))}
-        <Button variant="outline-primary" href={`/chore/edit/${obj.id}`}>
+        <Button variant="outline-primary" href={`/chores/edit/${obj.id}`}>
           <PencilSquare />
         </Button>
         <Button variant="danger" size="lg" onClick={deleteChore} className="deleteBtn">
