@@ -6,13 +6,14 @@ import {
 import Select from 'react-select';
 import PropTypes from 'prop-types';
 import { updateChore, createChore } from '../../api/choreData';
+import { useAuth } from '../../utils/context/authContext';
 
 const initialState = {
   name: '',
   description: '',
   frequency: '',
   priority: '',
-  owner: null,
+  owner: { id: '' },
   photo_url: '',
   category: [],
 };
@@ -21,6 +22,7 @@ export default function ChoreForm({ obj, categories, householdUsers }) {
   const [formInput, setFormInput] = useState(initialState);
   const [optionsForSelect, setOptions] = useState([]);
   const router = useRouter();
+  const { user } = useAuth();
 
   const handleSelect = (e) => {
     const category = e;
@@ -79,6 +81,7 @@ export default function ChoreForm({ obj, categories, householdUsers }) {
     } else {
       const payload = {
         ...formInput,
+        household: user.household.id,
       };
       createChore(payload).then(() => {
         router.push('/household');
@@ -105,7 +108,7 @@ export default function ChoreForm({ obj, categories, householdUsers }) {
         </FloatingLabel>
       </FormGroup>
       <FormGroup controlId="form.Input3" className="item-form-input">
-        <FloatingLabel label="Chore Frequency" className="mb-3">
+        <FloatingLabel label="Chore Priority" className="mb-3">
           <Form.Control type="text" placeholder="Enter Chore Priority" name="priority" value={formInput.priority} onChange={handleChange} required />
         </FloatingLabel>
       </FormGroup>
@@ -122,7 +125,7 @@ export default function ChoreForm({ obj, categories, householdUsers }) {
         <Form.Select controlId="floatingSelect" aria-label="owner select" name="owner" onChange={handleChange} className="profile-form-input">
           <option value="">Select an Owner</option>
           {householdUsers?.map((userObj) => (
-            <option key={userObj.id} value={userObj.id} selected={formInput.owner ? formInput.owner.id === userObj.id : ''}>
+            <option key={userObj.id} value={userObj.id} selected={formInput.owner?.id === userObj.id}>
               {userObj.full_name}
             </option>
           ))}

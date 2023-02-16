@@ -5,11 +5,12 @@ import {
   PencilSquare,
   Trash3Fill,
 } from 'react-bootstrap-icons';
+import { deleteChore } from '../api/choreData';
 
-export default function ChoreCard({ obj }) {
-  const deleteChore = () => {
+export default function ChoreCard({ obj, onUpdate }) {
+  const deleteThisChore = () => {
     if (window.confirm(`Delete ${obj.name}?`)) {
-      // deleteFoodItem(id).then(() => onUpdate());
+      deleteChore(obj.id).then(() => onUpdate());
     }
   };
   return (
@@ -29,7 +30,7 @@ export default function ChoreCard({ obj }) {
         <Button variant="outline-primary" href={`/chores/edit/${obj.id}`}>
           <PencilSquare />
         </Button>
-        <Button variant="danger" size="lg" onClick={deleteChore} className="deleteBtn">
+        <Button variant="danger" size="lg" onClick={deleteThisChore} className="deleteBtn">
           <Trash3Fill />
         </Button>
       </Card.Body>
@@ -48,4 +49,5 @@ ChoreCard.propTypes = {
     frequency: string,
     photo_url: string,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };

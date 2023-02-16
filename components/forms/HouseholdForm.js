@@ -6,6 +6,7 @@ import Select from 'react-select';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { createHousehold, editHousehold } from '../../api/householdData';
+import { useAuth } from '../../utils/context/authContext';
 
 const initialState = {
   name: '',
@@ -16,6 +17,7 @@ export default function HouseholdForm({ obj, allUsers }) {
   const [formInput, setFormInput] = useState(initialState);
   const [optionsForSelect, setOptions] = useState([]);
   const router = useRouter();
+  const { user } = useAuth();
 
   function optionsMap(userArr) {
     try {
@@ -73,6 +75,7 @@ export default function HouseholdForm({ obj, allUsers }) {
     } else {
       const payload = {
         ...formInput,
+        uid: user.uid,
       };
       createHousehold(payload).then(() => {
         router.push('/household');

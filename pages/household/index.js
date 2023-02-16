@@ -8,9 +8,9 @@ export default function MyHouseholdPage() {
   const [householdDetails, setHouseholdDetails] = useState({});
   const { user } = useAuth();
 
-  function getPageContent() {
+  const getPageContent = () => {
     getSingleHousehold(user.household.id).then(setHouseholdDetails);
-  }
+  };
 
   useEffect(() => {
     getPageContent();
@@ -21,8 +21,9 @@ export default function MyHouseholdPage() {
     <>
       <h1>{householdDetails.name}</h1>
       <Button href={`/household/edit/${user.household.id}`}>Manage Household</Button>
+      <Button href="/chores/addNewChore">Add New Chore</Button>
       {householdDetails.chores?.map((chore) => (
-        <ChoreCard key={chore.id} obj={chore} />
+        <ChoreCard key={chore.id} obj={chore} onUpdate={getPageContent} />
       ))}
     </>
   );

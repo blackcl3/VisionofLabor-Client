@@ -24,8 +24,14 @@ const editHousehold = (householdObject) => new Promise((resolve, reject) => {
 });
 
 const createHousehold = (householdObject) => new Promise((resolve, reject) => {
+  const householdObj = {
+    name: householdObject.name,
+    uid: householdObject.uid,
+    users: householdObject.users,
+  };
+
   axios
-    .post(`${dbUrl}/household`, householdObject)
+    .post(`${dbUrl}/household`, householdObj)
     .then(resolve)
     .catch(reject);
 });
