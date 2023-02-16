@@ -53,6 +53,23 @@ const deleteChore = (choreId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const cloneChore = (choreId, uid) => new Promise((resolve, reject) => {
+  const userUid = {
+    uid,
+  };
+  axios
+    .put(`${dbUrl}/chores/${choreId}/clone_chore`, userUid)
+    .then(resolve)
+    .catch(reject);
+});
+
+const getChoresByEmptyHousehold = () => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/chores?household=empty`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
 export {
-  getSingleChore, updateChore, createChore, deleteChore,
+  getSingleChore, updateChore, createChore, deleteChore, cloneChore, getChoresByEmptyHousehold,
 };
