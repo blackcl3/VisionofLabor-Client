@@ -1,4 +1,4 @@
-import PropTypes, { arrayOf, string, number } from 'prop-types';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import {
@@ -6,11 +6,14 @@ import {
   Trash3Fill,
 } from 'react-bootstrap-icons';
 import { deleteChore } from '../api/choreData';
+import { useAuth } from '../utils/context/authContext';
 
 export default function ChoreCard({ obj, onUpdate }) {
+  const { user } = useAuth();
   const deleteThisChore = () => {
     if (window.confirm(`Delete ${obj.name}?`)) {
-      deleteChore(obj.id).then(() => onUpdate());
+      console.warn(user.uid);
+      deleteChore(obj.id, user.uid).then(() => onUpdate());
     }
   };
   return (
@@ -40,14 +43,14 @@ export default function ChoreCard({ obj, onUpdate }) {
 
 ChoreCard.propTypes = {
   obj: PropTypes.shape({
-    id: number,
-    description: string,
-    name: string,
-    category: arrayOf(PropTypes.shape),
-    priority: string,
-    owner: PropTypes.shape,
-    frequency: string,
-    photo_url: string,
+    id: PropTypes.number,
+    description: PropTypes.string,
+    name: PropTypes.string,
+    category: PropTypes.arrayOf(PropTypes.shape),
+    priority: PropTypes.string,
+    owner: PropTypes.shape({ first_name: PropTypes.string }),
+    frequency: PropTypes.string,
+    photo_url: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

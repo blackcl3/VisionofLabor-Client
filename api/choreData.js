@@ -10,7 +10,7 @@ const getSingleChore = (choreId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateChore = (choreObj) => new Promise((resolve, reject) => {
+const updateChore = (choreObj, uid = '') => new Promise((resolve, reject) => {
   const choreObject = {
     id: choreObj.id,
     name: choreObj.name,
@@ -23,12 +23,16 @@ const updateChore = (choreObj) => new Promise((resolve, reject) => {
     household: choreObj.household.id,
   };
   axios
-    .put(`${dbUrl}/chores/${choreObject.id}`, choreObject)
+    .put(`${dbUrl}/chores/${choreObject.id}`, choreObject, {
+      headers: {
+        Authorization: uid,
+      },
+    })
     .then(resolve)
     .catch(reject);
 });
 
-const createChore = (choreObj) => new Promise((resolve, reject) => {
+const createChore = (choreObj, uid = '') => new Promise((resolve, reject) => {
   const choreObject = {
     id: choreObj.id,
     name: choreObj.name,
@@ -41,14 +45,22 @@ const createChore = (choreObj) => new Promise((resolve, reject) => {
     household: choreObj.household,
   };
   axios
-    .post(`${dbUrl}/chores`, choreObject)
+    .post(`${dbUrl}/chores`, choreObject, {
+      headers: {
+        Authorization: uid,
+      },
+    })
     .then(resolve)
     .catch(reject);
 });
 
-const deleteChore = (choreId) => new Promise((resolve, reject) => {
+const deleteChore = (choreId, uid = '') => new Promise((resolve, reject) => {
   axios
-    .delete(`${dbUrl}/chores/${choreId}`)
+    .delete(`${dbUrl}/chores/${choreId}`, {
+      headers: {
+        Authorization: uid,
+      },
+    })
     .then(resolve)
     .catch(reject);
 });

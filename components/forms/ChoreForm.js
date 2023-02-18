@@ -75,7 +75,7 @@ export default function ChoreForm({ obj, categories, householdUsers }) {
       const payload = {
         ...formInput,
       };
-      updateChore(payload).then(() => {
+      updateChore(payload, user.uid).then(() => {
         router.push('/household');
       });
     } else {
@@ -83,7 +83,7 @@ export default function ChoreForm({ obj, categories, householdUsers }) {
         ...formInput,
         household: user.household.id,
       };
-      createChore(payload).then(() => {
+      createChore(payload, user.uid).then(() => {
         router.push('/household');
       });
     }
@@ -146,7 +146,7 @@ ChoreForm.propTypes = {
     frequency: PropTypes.string,
     priority: PropTypes.string,
     photo_url: PropTypes.string,
-    owner: PropTypes.number,
+    owner: PropTypes.shape,
     category: PropTypes.arrayOf(PropTypes.shape),
   }),
   categories: PropTypes.arrayOf(PropTypes.shape),

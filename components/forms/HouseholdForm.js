@@ -17,7 +17,7 @@ export default function HouseholdForm({ obj, allUsers }) {
   const [formInput, setFormInput] = useState(initialState);
   const [optionsForSelect, setOptions] = useState([]);
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, updateUser } = useAuth();
 
   function optionsMap(userArr) {
     try {
@@ -77,8 +77,8 @@ export default function HouseholdForm({ obj, allUsers }) {
         ...formInput,
         uid: user.uid,
       };
-      createHousehold(payload).then(() => {
-        router.push('/household');
+      createHousehold(payload).then(updateUser(user.uid)).then(() => {
+        router.push('/');
       });
     }
   };

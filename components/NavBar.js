@@ -22,7 +22,7 @@ export default function NavBar() {
             <Link passHref href="/">
               <Nav.Link>Home</Nav.Link>
             </Link>
-            {user.household.id ? (
+            {user.household !== 'null' ? (
               <Link passHref href="/household">
                 <Nav.Link>My Household</Nav.Link>
               </Link>

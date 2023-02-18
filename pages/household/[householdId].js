@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { getSingleHousehold } from '../../api/householdData';
 import ChoreCard from '../../components/ChoreCard';
+import ProfileCard from '../../components/ProfileCard';
 import { useAuth } from '../../utils/context/authContext';
 
 export default function IndividualHouseholdPage() {
@@ -24,6 +25,9 @@ export default function IndividualHouseholdPage() {
     <>
       <h1>{householdDetails.name}</h1>
       <Button href={`/household/edit/${user.household.id}`}>Manage Household</Button>
+      {householdDetails.users?.map((userObj) => (
+        <ProfileCard key={userObj.id} obj={userObj} />
+      ))}
       <Button href="/chores/addNewChore">Add New Chore</Button>
       {householdDetails.chores?.map((chore) => (
         <ChoreCard key={chore.id} obj={chore} onUpdate={getPageContent} />
