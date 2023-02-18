@@ -77,7 +77,7 @@ export default function HouseholdForm({ obj, allUsers }) {
         ...formInput,
         uid: user.uid,
       };
-      createHousehold(payload).then(updateUser(user.uid)).then(window.location = 'http://localhost:3000/household');
+      createHousehold(payload).then(() => updateUser(user.uid)).then(() => { router.push('/'); });
     }
   };
 
