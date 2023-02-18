@@ -12,7 +12,6 @@ export default function ChoreCard({ obj, onUpdate }) {
   const { user } = useAuth();
   const deleteThisChore = () => {
     if (window.confirm(`Delete ${obj.name}?`)) {
-      console.warn(user.uid);
       deleteChore(obj.id, user.uid).then(() => onUpdate());
     }
   };
