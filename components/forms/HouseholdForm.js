@@ -6,6 +6,7 @@ import Select from 'react-select';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { createHousehold, editHousehold } from '../../api/householdData';
+import { useAuth } from '../../utils/context/authContext';
 
 const initialState = {
   name: '',
@@ -16,6 +17,7 @@ export default function HouseholdForm({ obj, allUsers }) {
   const [formInput, setFormInput] = useState(initialState);
   const [optionsForSelect, setOptions] = useState([]);
   const router = useRouter();
+  const { user, updateUser } = useAuth();
 
   function optionsMap(userArr) {
     try {
@@ -73,22 +75,23 @@ export default function HouseholdForm({ obj, allUsers }) {
     } else {
       const payload = {
         ...formInput,
+        uid: user.uid,
       };
-      createHousehold(payload).then(() => {
-        router.push('/household');
+      createHousehold(payload).then(updateUser(user.uid)).then(() => {
+        router.push('/');
       });
     }
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="food-item-form">
-      <h1 className="food-item-form-h1">{obj.id ? 'Edit' : 'Add'} Household</h1>
-      <FormGroup controlId="form.Input1" className="food-item-form-input">
+    <Form onSubmit={handleSubmit} className="item-form">
+      <h1 className="item-form-h1">{obj.id ? 'Edit' : 'Add'} Household</h1>
+      <FormGroup controlId="form.Input1" className="item-form-input">
         <FloatingLabel label="Household Name" className="mb-3">
           <Form.Control type="text" placeholder="Enter Household Name" name="name" value={formInput.name} onChange={handleChange} required />
         </FloatingLabel>
       </FormGroup>
-      <FormGroup controlId="floatingSelect" className="food-item-form-input">
+      <FormGroup controlId="floatingSelect" className="item-form-input">
         <Select aria-label="member select" name="users" value={formInput.users} isMulti options={optionsForSelect} onChange={handleSelect} />
       </FormGroup>
       <div>

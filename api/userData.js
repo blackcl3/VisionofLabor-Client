@@ -17,4 +17,11 @@ const getAllUsers = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getUsersWithNoHousehold, getAllUsers };
+const getUsersByHousehold = (householdId) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/users?household=${householdId}`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
+export { getUsersWithNoHousehold, getAllUsers, getUsersByHousehold };
