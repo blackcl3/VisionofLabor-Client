@@ -77,9 +77,7 @@ export default function HouseholdForm({ obj, allUsers }) {
         ...formInput,
         uid: user.uid,
       };
-      createHousehold(payload).then(updateUser(user.uid)).then(() => {
-        router.push('/');
-      });
+      createHousehold(payload).then(() => updateUser(user.uid)).then(() => { router.push('/'); });
     }
   };
 
@@ -92,7 +90,7 @@ export default function HouseholdForm({ obj, allUsers }) {
         </FloatingLabel>
       </FormGroup>
       <FormGroup controlId="floatingSelect" className="item-form-input">
-        <Select aria-label="member select" name="users" value={formInput.users} isMulti options={optionsForSelect} onChange={handleSelect} />
+        <Select aria-label="member select" name="users" value={formInput.users} isMulti options={optionsForSelect} onChange={handleSelect} required />
       </FormGroup>
       <div>
         <Button type="submit">{obj.id ? 'Update' : 'Add New'} Household</Button>
