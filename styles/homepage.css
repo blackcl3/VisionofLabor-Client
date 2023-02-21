@@ -1,0 +1,22 @@
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-page-header {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.main-page-button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-page-button {
+    text-align: center;
+    width: 20%;
+    margin: 40px 0;
+}

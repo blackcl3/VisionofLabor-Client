@@ -23,15 +23,27 @@ export default function IndividualHouseholdPage() {
 
   return (
     <>
-      <h1>{householdDetails.name}</h1>
-      <Button href={`/household/edit/${user.household.id}`}>Manage Household</Button>
-      {householdDetails.users?.map((userObj) => (
-        <ProfileCard key={userObj.id} obj={userObj} />
-      ))}
-      <Button href="/chores/addNewChore">Add New Chore</Button>
-      {householdDetails.chores?.map((chore) => (
-        <ChoreCard key={chore.id} obj={chore} onUpdate={getPageContent} />
-      ))}
+      <h1 className="household-h1">Household: {householdDetails.name}</h1>
+      <div className="household-button-group">
+        <Button className="household-buttons" href={`/household/edit/${user.household.id}`}>
+          Manage Household
+        </Button>
+        <Button className="household-buttons" href="/chores/addNewChore">
+          Add New Chore
+        </Button>
+      </div>
+      <h3 className="household-h3">Household Members</h3>
+      <div className="profile-container">
+        {householdDetails.users?.map((userObj) => (
+          <ProfileCard key={userObj.id} obj={userObj} />
+        ))}
+      </div>
+      <h3 className="household-h3">Current Chores</h3>
+      <div className="chore-card-container">
+        {householdDetails.chores?.map((chore) => (
+          <ChoreCard key={chore.id} obj={chore} onUpdate={getPageContent} />
+        ))}
+      </div>
     </>
   );
 }

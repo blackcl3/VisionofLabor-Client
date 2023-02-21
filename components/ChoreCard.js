@@ -5,6 +5,7 @@ import {
   PencilSquare,
   Trash3Fill,
 } from 'react-bootstrap-icons';
+import { Avatar } from '@mui/material';
 import { deleteChore } from '../api/choreData';
 import { useAuth } from '../utils/context/authContext';
 
@@ -16,16 +17,14 @@ export default function ChoreCard({ obj, onUpdate }) {
     }
   };
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card className="chore-card">
       <Card.Img variant="top" src={obj.photo_url} />
       <Card.Body>
         <Card.Title>{obj.name}</Card.Title>
         <Card.Text>{obj.description}</Card.Text>
         <Card.Text>{obj.frequency}</Card.Text>
         <Card.Text>{obj.priority}</Card.Text>
-        {obj.owner ? (<Button>{obj.owner.first_name}</Button>) : (
-          <Button>No Owner Assigned</Button>
-        )}
+        {obj.owner ? <Avatar src={obj.owner.photo_url} /> : <></>}
         {obj.category?.map((category) => (
           <Button key={category.id}>{category.category.label}</Button>
         ))}
@@ -47,7 +46,7 @@ ChoreCard.propTypes = {
     name: PropTypes.string,
     category: PropTypes.arrayOf(PropTypes.shape),
     priority: PropTypes.string,
-    owner: PropTypes.shape({ first_name: PropTypes.string }),
+    owner: PropTypes.shape({ first_name: PropTypes.string, photo_url: PropTypes.string }),
     frequency: PropTypes.string,
     photo_url: PropTypes.string,
   }).isRequired,

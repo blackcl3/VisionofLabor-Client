@@ -1,4 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import 'homepage.css';
+@import 'profile.css';
+@import 'chores.css';
 
 html,
 body {
@@ -19,4 +22,28 @@ a {
 
 body {
   background-color: #88effd;
+}
+
+.household-button-group{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.household-buttons {
+  max-width: 260px;
+  margin: 20px;
+  width: 50%;
+}
+
+.household-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.household-h1 {
+  text-align: center;
+}
+.household-h3 {
+  text-align: center;
 }
