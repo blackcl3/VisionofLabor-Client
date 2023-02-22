@@ -6,7 +6,8 @@
 
 .main-page-header {
     text-align: center;
-    margin: 30px 0;
+    margin: 60px 0 75px 0;
+    font-weight: 700;
 }
 
 .main-page-button-container {
@@ -17,6 +18,5 @@
 
 .main-page-button {
     text-align: center;
-    width: 20%;
     margin: 40px 0;
 }

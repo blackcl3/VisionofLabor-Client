@@ -21,7 +21,7 @@ function Home() {
   return (
     <>
       <div>
-        <h1 className="main-page-header">Welcome {user.full_name}! </h1>
+        <h1 className="main-page-header">Welcome, {user.full_name}! </h1>
         <div className="main-page-button-container">
           {user.household?.id ? (
             <Button className="main-page-button" href={`household/${user.household.id}`}>

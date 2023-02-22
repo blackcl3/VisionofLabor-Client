@@ -10,7 +10,7 @@ import { useAuth } from '../utils/context/authContext';
 export default function NavBar() {
   const { user } = useAuth();
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" variant="light" className="nav-bar">
       <Container>
         <Link passHref href="/">
           <Navbar.Brand>VisionOfLabor</Navbar.Brand>
