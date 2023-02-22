@@ -1,14 +1,13 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { Avatar } from '@mui/material';
 
 export default function ProfileCard({ obj }) {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={obj.photo_url} />
-      <Card.Body>
-        <Card.Title>{obj.full_name}</Card.Title>
-      </Card.Body>
+    <Card className="profile-card">
+      <Avatar src={obj.photo_url} />
+      <Card.Title>{obj.full_name}</Card.Title>
     </Card>
   );
 }
