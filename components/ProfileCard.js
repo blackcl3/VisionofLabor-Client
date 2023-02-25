@@ -1,13 +1,18 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { Avatar } from '@mui/material';
+import { Avatar, Button } from '@mui/material';
+import { useAuth } from '../utils/context/authContext';
 
 export default function ProfileCard({ obj }) {
+  const { user } = useAuth();
+
   return (
     <Card className="profile-card">
       <Avatar src={obj.photo_url} />
       <Card.Title>{obj.full_name}</Card.Title>
+      <Button href={`/profile/${obj.id}`}>View Profile</Button>
+      {user.id === obj.id ? <Button href={`/profile/edit/${obj.id}`}>Edit</Button> : <></>}
     </Card>
   );
 }

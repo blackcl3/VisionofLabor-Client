@@ -3,6 +3,13 @@ import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
 
+const getIndividualUser = (userId) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/users/${userId}`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
 const getUsersWithNoHousehold = () => new Promise((resolve, reject) => {
   axios
     .get(`${dbUrl}/users?household=empty`)
@@ -24,4 +31,6 @@ const getUsersByHousehold = (householdId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getUsersWithNoHousehold, getAllUsers, getUsersByHousehold };
+export {
+  getIndividualUser, getUsersWithNoHousehold, getAllUsers, getUsersByHousehold,
+};
