@@ -23,11 +23,20 @@ export default function NavBar() {
               <Nav.Link>Home</Nav.Link>
             </Link>
             {user.household !== 'null' ? (
-              <Link passHref href="/household">
-                <Nav.Link>My Household</Nav.Link>
-              </Link>
-            ) : (<></>)}
-
+              <>
+                <Link passHref href="/household">
+                  <Nav.Link>My Household</Nav.Link>
+                </Link>
+                <Link passHref href="/todo">
+                  <Nav.Link>To Do</Nav.Link>
+                </Link>
+              </>
+            ) : (
+              <></>
+            )}
+            <Link passHref href={`/profile/${user.id}`}>
+              <Nav.Link>My Profile</Nav.Link>
+            </Link>
             <button type="button" className="btn btn-danger" onClick={signOut}>
               Sign Out
             </button>

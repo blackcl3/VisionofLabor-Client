@@ -57,3 +57,31 @@ body {
 .household-h3 {
   text-align: center;
 }
+
+.custom-checkbox-root .MuiSvgIcon-root{
+  width: 50px;
+  height: 50px;
+}
+
+.profile-chore-div{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profile-chore-card {
+  width: 80%;
+  max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profile-chore-card-text {
+  width: 50%;
+  float: left;
+}
+
+.profile-chore-card-btn-group {
+  width: 50%;
+  float: right;
+}
