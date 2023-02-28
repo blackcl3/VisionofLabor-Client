@@ -22,9 +22,11 @@ export default function ProfilePage() {
     <>
       <h2>{profileDetails.full_name}&apos;s Page</h2>
       <ProfileCard obj={profileDetails} />
-      {profileDetails.chores?.map((chore) => (
-        <ProfileChoreCard photoUrl={profileDetails.photo_url} key={chore.id} obj={chore} onUpdate={getPageContent} />
-      ))}
+      <div className="profile-chore-div">
+        {profileDetails.chores?.map((chore) => (
+          <ProfileChoreCard photoUrl={profileDetails.photo_url} key={chore.id} obj={chore} onUpdate={getPageContent} />
+        ))}
+      </div>
     </>
   );
 }

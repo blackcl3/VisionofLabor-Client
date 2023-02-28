@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
-import { Avatar, Checkbox, FormControlLabel } from '@mui/material';
+import {
+  Avatar, Checkbox, FormControlLabel, Tooltip,
+} from '@mui/material';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { deleteChore } from '../api/choreData';
+import { deleteChore, statusChange } from '../api/choreData';
 import { useAuth } from '../utils/context/authContext';
 
 export default function ProfileChoreCard({ obj, photoUrl, onUpdate }) {
@@ -14,24 +17,32 @@ export default function ProfileChoreCard({ obj, photoUrl, onUpdate }) {
       deleteChore(obj.id, user.uid).then(() => onUpdate());
     }
   };
+  const changeChoreStatus = () => {
+    statusChange(obj.id, user.uid).then(() => onUpdate());
+  };
   return (
-    <Card className="chore-card">
+    <Card className="profile-chore-card">
       <Card.Body>
-        <Card.Title>{obj.name}</Card.Title>
-        <Card.Text>{obj.description}</Card.Text>
-        <Card.Text>{obj.frequency}</Card.Text>
-        <Card.Text>{obj.priority}</Card.Text>
-        <Avatar src={photoUrl} />
-        {obj.category?.map((category) => (
-          <Button key={category.id}>{category.category.label}</Button>
-        ))}
-        <Button variant="outline-primary" href={`/chores/edit/${obj.id}`}>
-          <EditOutlinedIcon />
-        </Button>
-        <Button variant="danger" size="md" onClick={deleteThisChore} className="deleteBtn">
-          <DeleteForeverIcon />
-        </Button>
-        <FormControlLabel control={<Checkbox defaultChecked classes={{ root: 'custom-checkbox-root' }} />} label="Done?" labelPlacement="end" />
+        <Card.Title>
+          {obj.name}
+          <Tooltip title={obj.description}>
+            <HelpOutlineIcon />
+          </Tooltip>
+        </Card.Title>
+        <div className="profile-chore-card-text">
+          <Card.Text>{obj.frequency}</Card.Text>
+          <Card.Text>{obj.priority}</Card.Text>
+          <Avatar src={photoUrl} />
+        </div>
+        <div className="profile-chore-card-btn-group">
+          <Button variant="outline-primary" href={`/chores/edit/${obj.id}`}>
+            <EditOutlinedIcon />
+          </Button>
+          <Button variant="danger" size="md" onClick={deleteThisChore} className="deleteBtn">
+            <DeleteForeverIcon />
+          </Button>
+          <FormControlLabel control={<Checkbox onClick={changeChoreStatus} checked={obj.status} classes={{ root: 'custom-checkbox-root' }} />} label="Done?" labelPlacement="end" />
+        </div>
       </Card.Body>
     </Card>
   );
@@ -46,6 +57,7 @@ ProfileChoreCard.propTypes = {
     priority: PropTypes.string,
     frequency: PropTypes.string,
     photo_url: PropTypes.string,
+    status: PropTypes.bool,
   }).isRequired,
   photoUrl: PropTypes.string.isRequired,
   onUpdate: PropTypes.func.isRequired,

@@ -82,6 +82,13 @@ const getChoresByEmptyHousehold = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const statusChange = (choreId, uid) => new Promise((resolve, reject) => {
+  const userUid = {
+    uid,
+  };
+  axios.put(`${dbUrl}/chores/${choreId}/status_change`, userUid).then(resolve).catch(reject);
+});
+
 export {
-  getSingleChore, updateChore, createChore, deleteChore, cloneChore, getChoresByEmptyHousehold,
+  getSingleChore, updateChore, createChore, deleteChore, cloneChore, getChoresByEmptyHousehold, statusChange,
 };

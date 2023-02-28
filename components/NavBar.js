@@ -23,9 +23,14 @@ export default function NavBar() {
               <Nav.Link>Home</Nav.Link>
             </Link>
             {user.household !== 'null' ? (
-              <Link passHref href="/household">
-                <Nav.Link>My Household</Nav.Link>
-              </Link>
+              <>
+                <Link passHref href="/household">
+                  <Nav.Link>My Household</Nav.Link>
+                </Link>
+                <Link passHref href="/todo">
+                  <Nav.Link>To Do</Nav.Link>
+                </Link>
+              </>
             ) : (
               <></>
             )}
