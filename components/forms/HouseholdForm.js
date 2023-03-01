@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { createHousehold, editHousehold } from '../../api/householdData';
 import { useAuth } from '../../utils/context/authContext';
+import { optionsMap } from '../../utils/format-data-for-select';
 
 const initialState = {
   name: '',
@@ -18,18 +19,6 @@ export default function HouseholdForm({ obj, allUsers }) {
   const [optionsForSelect, setOptions] = useState([]);
   const router = useRouter();
   const { user, updateUser } = useAuth();
-
-  function optionsMap(userArr) {
-    try {
-      const options = userArr.map((userObj) => ({
-        value: userObj.id,
-        label: userObj.full_name,
-      }));
-      return options;
-    } catch {
-      return false;
-    }
-  }
 
   function getFormContent() {
     setOptions(optionsMap(allUsers));

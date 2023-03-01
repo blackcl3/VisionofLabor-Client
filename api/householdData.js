@@ -16,6 +16,13 @@ const getSingleHousehold = (householdId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getAllHouseholds = () => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/household`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
 const editHousehold = (householdObject) => new Promise((resolve, reject) => {
   axios
     .put(`${dbUrl}/household/${householdObject.id}`, householdObject)
@@ -36,4 +43,6 @@ const createHousehold = (householdObject) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getSingleHousehold, editHousehold, createHousehold };
+export {
+  getSingleHousehold, getAllHouseholds, editHousehold, createHousehold,
+};
