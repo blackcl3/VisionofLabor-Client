@@ -89,6 +89,13 @@ const statusChange = (choreId, uid) => new Promise((resolve, reject) => {
   axios.put(`${dbUrl}/chores/${choreId}/status_change`, userUid).then(resolve).catch(reject);
 });
 
+const resetToDo = (choreId, uid) => new Promise((resolve, reject) => {
+  const userUid = {
+    uid,
+  };
+  axios.put(`${dbUrl}/chores/${choreId}/reset_status`, userUid).then(resolve).catch(reject);
+});
+
 export {
-  getSingleChore, updateChore, createChore, deleteChore, cloneChore, getChoresByEmptyHousehold, statusChange,
+  getSingleChore, updateChore, createChore, deleteChore, cloneChore, getChoresByEmptyHousehold, statusChange, resetToDo,
 };
