@@ -1,4 +1,4 @@
-export function optionsMap(Arr) {
+function optionsMap(Arr) {
   try {
     const options = Arr.map((obj) => ({
       value: obj.id,
@@ -10,7 +10,7 @@ export function optionsMap(Arr) {
   }
 }
 
-export function householdMap(Arr) {
+function householdMap(Arr) {
   try {
     const options = Arr.map((obj) => ({
       value: obj.id,
@@ -21,3 +21,17 @@ export function householdMap(Arr) {
     return false;
   }
 }
+
+function householdObjectChangeForReactSelect(obj) {
+  try {
+    const newObj = {
+      value: obj.id,
+      label: obj.name,
+    };
+    return newObj;
+  } catch {
+    return false;
+  }
+}
+
+export { optionsMap, householdMap, householdObjectChangeForReactSelect };

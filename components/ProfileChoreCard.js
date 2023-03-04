@@ -56,7 +56,6 @@ ProfileChoreCard.propTypes = {
     category: PropTypes.arrayOf(PropTypes.shape),
     priority: PropTypes.string,
     frequency: PropTypes.string,
-    photo_url: PropTypes.string,
     status: PropTypes.bool,
   }).isRequired,
   photoUrl: PropTypes.string.isRequired,

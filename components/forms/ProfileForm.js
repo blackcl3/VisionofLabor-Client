@@ -7,7 +7,7 @@ import {
 } from 'react-bootstrap';
 import Select from 'react-select';
 import { useAuth } from '../../utils/context/authContext';
-import { householdMap } from '../../utils/format-data-for-select';
+import { householdMap, householdObjectChangeForReactSelect } from '../../utils/format-data-for-select';
 import { updateUser } from '../../api/userData';
 
 const initialState = {
@@ -31,6 +31,7 @@ export default function ProfileForm({ obj, allHouseholds }) {
 
   const handleSelect = (e) => {
     const household = e;
+    console.warn(household);
     setFormInput((prevState) => ({
       ...prevState,
       household,
@@ -41,8 +42,7 @@ export default function ProfileForm({ obj, allHouseholds }) {
     getFormContent();
     if (obj.id) {
       setFormInput(obj);
-      const household = householdMap([obj.household]);
-      console.warn(household);
+      const household = householdObjectChangeForReactSelect(obj.household);
       setFormInput((prevState) => ({
         ...prevState,
         household,
@@ -104,7 +104,7 @@ ProfileForm.propTypes = {
     first_name: PropTypes.string,
     last_name: PropTypes.string,
     photo_url: PropTypes.string,
-    household: PropTypes.string,
+    household: PropTypes.func,
   }),
   allHouseholds: PropTypes.arrayOf(PropTypes.shape),
 };

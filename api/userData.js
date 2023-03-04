@@ -32,6 +32,7 @@ const getUsersByHousehold = (householdId) => new Promise((resolve, reject) => {
 });
 
 const updateUser = (payload) => new Promise((resolve, reject) => {
+  console.warn(payload);
   const userObj = {
     id: payload.id,
     first_name: payload.first_name,
@@ -40,6 +41,7 @@ const updateUser = (payload) => new Promise((resolve, reject) => {
     photo_url: payload.photo_url,
     admin: true,
   };
+  console.warn(userObj);
   axios
     .put(`${dbUrl}/users/${userObj.id}`, userObj)
     .then(resolve)

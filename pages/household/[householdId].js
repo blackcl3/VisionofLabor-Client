@@ -19,7 +19,7 @@ export default function IndividualHouseholdPage() {
   useEffect(() => {
     getPageContent();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [user.household.id]);
 
   return (
     <>
