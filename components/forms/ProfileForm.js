@@ -31,7 +31,6 @@ export default function ProfileForm({ obj, allHouseholds }) {
 
   const handleSelect = (e) => {
     const household = e;
-    console.warn(household);
     setFormInput((prevState) => ({
       ...prevState,
       household,
