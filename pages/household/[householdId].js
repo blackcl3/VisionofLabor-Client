@@ -28,6 +28,9 @@ export default function IndividualHouseholdPage() {
         <Button className="household-buttons" href={`/household/edit/${user.household.id}`}>
           Manage Household
         </Button>
+        <Button className="household-buttons" href="/household/metrics">
+          View Household Metrics
+        </Button>
         <Button className="household-buttons" href="/chores/addNewChore">
           Add New Chore
         </Button>

@@ -1,0 +1,10 @@
+.metrics-h1 {
+    text-align: center;
+    margin: 75px 0;
+    font-weight: 700;
+}
+
+.pie-chart-div {
+    justify-content: center;
+    width: 50%;
+}

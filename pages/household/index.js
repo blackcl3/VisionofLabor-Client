@@ -26,9 +26,14 @@ export default function MyHouseholdPage() {
 
         <div className="household-button-group">
           {user.household?.id ? (
-            <Button className="household-buttons" href={`/household/edit/${user.household?.id}`}>
-              Manage Household
-            </Button>
+            <>
+              <Button className="household-buttons" href={`/household/edit/${user.household?.id}`}>
+                Manage Household
+              </Button>
+              <Button className="household-buttons" href="/household/metrics">
+                View Household Metrics
+              </Button>
+            </>
           ) : (
             <Button disabled className="household-buttons">
               Manage Household

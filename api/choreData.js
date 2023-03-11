@@ -96,6 +96,16 @@ const resetToDo = (choreId, uid) => new Promise((resolve, reject) => {
   axios.put(`${dbUrl}/chores/${choreId}/reset_status`, userUid).then(resolve).catch(reject);
 });
 
+const getBarChartData = (uid) => new Promise((resolve, reject) => {
+  const userUid = {
+    uid,
+  };
+  axios
+    .post(`${dbUrl}/chores/get_values_for_pie_chart`, userUid)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
 export {
-  getSingleChore, updateChore, createChore, deleteChore, cloneChore, getChoresByEmptyHousehold, statusChange, resetToDo,
+  getSingleChore, updateChore, createChore, deleteChore, cloneChore, getChoresByEmptyHousehold, statusChange, resetToDo, getBarChartData,
 };
