@@ -4,6 +4,7 @@
 @import 'profile.css';
 @import 'chores.css';
 @import 'metrics.css';
+@import 'todo.css';
 
 html,
 body {
@@ -75,6 +76,8 @@ body {
   max-width: 600px;
   display: flex;
   flex-wrap: wrap;
+  background-color: #ffd9e0;
+  margin: 20px;
 }
 
 .profile-chore-card-text {
@@ -85,4 +88,9 @@ body {
 .profile-chore-card-btn-group {
   width: 50%;
   float: right;
+}
+
+.sample-chore-card {
+  margin: 0 40px;
+  background-color: #d9fff8;
 }

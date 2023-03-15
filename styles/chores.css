@@ -10,4 +10,9 @@
     width: 50%;
     max-width: 400px;
     margin: 20px;
+    background-color: #ffd9e0;
+}
+
+.deleteBtn {
+    margin-left: 5px;
 }
