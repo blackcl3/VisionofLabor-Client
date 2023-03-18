@@ -26,20 +26,24 @@ export default function TodoPage() {
     <>
       {user.household?.id ? (
         <>
-          <h1>To Do for {householdDetails.name} Household</h1>
-          <Button className="household-buttons" href={`/household/edit/${user.household?.id}`}>
-            Manage Household
-          </Button>
-          <Button className="houshold-buttons" onClick={resetChoresToDoList} variant="outline-success">
-            Reset List
-          </Button>
+          <h1 className="todo-h1">To Do for {householdDetails.name} Household</h1>
+          <div className="todo-list-button-group">
+            <Button className="household-buttons" href={`/household/edit/${user.household?.id}`}>
+              Manage Household
+            </Button>
+            <Button className="houshold-buttons" onClick={resetChoresToDoList} variant="outline-success">
+              Reset List
+            </Button>
+          </div>
         </>
       ) : (
         <h1>Please Add Yourself to a Household, or Create a new Household</h1>
       )}
-      {householdDetails.chores?.map((chore) => (
-        <ProfileChoreCard photoUrl={chore.owner ? chore.owner.photo_url : null} key={chore.id} obj={chore} onUpdate={getPageContent} />
-      ))}
+      <div className="chore-todo-div">
+        {householdDetails.chores?.map((chore) => (
+          <ProfileChoreCard photoUrl={chore.owner ? chore.owner.photo_url : null} key={chore.id} obj={chore} onUpdate={getPageContent} />
+        ))}
+      </div>
     </>
   );
 }

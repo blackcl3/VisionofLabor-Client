@@ -13,7 +13,7 @@ export default function ChoreCard({ obj, uid }) {
     }
   };
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem' }} className="sample-chore-card">
       <Card.Body>
         <Card.Title>{obj.name}</Card.Title>
         <Card.Text>{obj.description}</Card.Text>
