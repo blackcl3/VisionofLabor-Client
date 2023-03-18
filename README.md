@@ -6,10 +6,6 @@ Vision of Labor is an application to help users more equitably divide and manage
 When a user logs in to the app, they see common household chores that they can add to their household, avoiding having to add every chore manually. Users can also add custom chores if the pre-existing options do not fully represent what they need.
 
 
-## Documentation
-
-[Documentation](https://linktodocumentation)
-
 
 ## Screenshots
 ![Home Page](https://user-images.githubusercontent.com/24661749/226114105-b15c4dc0-630a-4305-8fc3-5cd9da34cf7d.png)
@@ -37,11 +33,9 @@ Clone the client side repo
   git clone https://github.com/blackcl3/VisionofLabor-Client
 ```
 
-Clone the server side repo and follow installation and running instructions there
+Clone the server side repo and follow installation instructions:
 
-```bash
-   git clone https://github.com/blackcl3/VisionofLabor-Server
-```
+[VisionOfLabor Server](https://github.com/blackcl3/VisionofLabor-Server)
 
 
 Install dependencies
