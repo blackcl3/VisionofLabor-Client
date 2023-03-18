@@ -1,65 +1,77 @@
-# React/Next.js Template
 
-[See Live Demo of this Template](https://drt-next-js-template.netlify.app/)
+# VisionOfLabor
 
-## Topics
-- [Get Started](#getting-started)
-- [Starting the Project](#starting-the-project)
-- [Using axios](#using-axios)
-- [Deploying on Netlify](#deploying-on-netlify)
-___
-## Getting Started
-### Use Template
-#### 1. To get started, click the GREEN "Use this Template" button at the top of the repo
-<img width="915" alt="Screen Shot 2022-07-06 at 12 54 01 PM" src="https://user-images.githubusercontent.com/29741570/177612998-4aac9237-5a1e-4f13-8ae0-468587521564.png">
+Vision of Labor is an application to help users more equitably divide and manage the chores for their household. Using data generated from the app, users can more easily have conversations around who should be doing what, and how frequently, so that household duties are both visualized and more evenly distributed. 
 
-#### 2. Make sure YOUR github account is selected in the dropdown and name your project
-<img width="763" alt="Screen Shot 2022-07-06 at 12 54 48 PM" src="https://user-images.githubusercontent.com/29741570/177613126-dd38f678-7553-4f27-8a4a-75680f14d71e.png">
+When a user logs in to the app, they see common household chores that they can add to their household, avoiding having to add every chore manually. Users can also add custom chores if the pre-existing options do not fully represent what they need.
 
-#### 3. Clone your new repo to your local machine
-#### 4. Go to the **NEXT** section
 
-## Starting the Project
-1. Open the `package.json` file and change the `name` property to the name of your application, and `author` to  your name.
-1. From your command line, be in the root directory and run `npm install` OR `npm i` for short.
-1. Next, run `npm run prepare`. This command sets up husky to track eslint errors on commit that will make your deploy fail on Netlify.
-1. To start your application, run `npm run dev`. THIS IS THE COMMAND YOU WILL USE TO RUN YOUR DEVELOPMENT SERVER FROM NOW ON.
-1. Open [http://localhost:3000](http://localhost:3000) with your browser.
+## Documentation
 
-### If you see this, you are set to go!
-<img width="510" alt="Screen Shot 2022-07-09 at 11 29 54 AM" src="https://user-images.githubusercontent.com/31781724/178114566-b2a67164-a604-4e10-9430-4c3054e2d8ab.png">
+[Documentation](https://linktodocumentation)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-### Using Axios
-> For every file you will need to make an XHR request in, you will need to require Axios
-```js
-import axios from 'axios';
+## Screenshots
+![Home Page](https://user-images.githubusercontent.com/24661749/226114105-b15c4dc0-630a-4305-8fc3-5cd9da34cf7d.png)
+![Household Page View](https://user-images.githubusercontent.com/24661749/226114109-e5f714eb-0080-4c6e-8a55-455bf6e4623c.png)
+![Household Metrics](https://user-images.githubusercontent.com/24661749/226114110-d50c20da-abde-41dc-8d7e-d4af7cb09765.png)
 
-const examplePromise = () => {
-  axios.get('http://localhost:3001/example')
-    .then((data) => {
-      console.warn(data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-});
+
+## Run Locally
+
+Create parent directory for server and client
+```bash
+  mkdir VisionOfLabor
 ```
 
-### Deploying on Netlify
-Netlify will automatically detect your project and prepopulate the settings, but should something go wrong and it does not, here are the commands:
+Go to the project directory
 
-- Build Command: `npm run build`
-- Publish directory: `.next`
+```bash
+  cd VisionOfLabor
+```
 
-#### Additional Steps to Take on Netlify
-- Add Environmental Variables
-    - Any Enviromental variables you are using in your `.env` file should be added to Netlify. 
-        - Go to Site settings > Build & deploy > Environment > Environment variables and the keys and values there.
-        
-## Learn More about Next.js
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Clone the client side repo
+
+```bash
+  git clone https://github.com/blackcl3/VisionofLabor-Client
+```
+
+Clone the server side repo and follow installation and running instructions there
+
+```bash
+   git clone https://github.com/blackcl3/VisionofLabor-Server
+```
+
+
+Install dependencies
+
+```bash
+  npm install
+  npm run prepare
+```
+
+
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+
+## Tech Stack
+
+**Client:** React, NextJS, MaterialUI, ReactBootstrap
+
+**Server:** Django, Python
+
+
+## Appendix
+
+Any additional information goes here
+
+
+## 🚀 About Me
+I'm a full stack developer...
+
