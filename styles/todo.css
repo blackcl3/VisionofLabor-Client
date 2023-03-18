@@ -1,6 +1,7 @@
 .todo-h1 {
     display: flex;
     justify-content: center;
+    margin: 40px 0;
 }
 
 .todo-list-button-group{
