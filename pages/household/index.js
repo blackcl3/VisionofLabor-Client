@@ -23,6 +23,7 @@ export default function MyHouseholdPage() {
       <h1 className="household-h1">Household: {householdDetails.name}</h1>
 
       <div className="household-div">
+
         <div className="household-button-group">
           {user.household?.id ? (
             <>
@@ -53,11 +54,9 @@ export default function MyHouseholdPage() {
 
         <div className="chore-card-container">
           <h3 className="household-h3">Household Chores:</h3>
-          <div className="chore-card-div">
-            {householdDetails.chores?.map((chore) => (
-              <ChoreCard key={chore.id} obj={chore} onUpdate={getPageContent} />
-            ))}
-          </div>
+          {householdDetails.chores?.map((chore) => (
+            <ChoreCard key={chore.id} obj={chore} onUpdate={getPageContent} />
+          ))}
         </div>
       </div>
     </>
