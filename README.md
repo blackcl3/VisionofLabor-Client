@@ -56,16 +56,8 @@ Start the server
 
 ## Tech Stack
 
-**Client:** React, NextJS, MaterialUI, ReactBootstrap
+**Client:** React, NextJS, MaterialUI, ReactBootstrap, ChartJS
 
 **Server:** Django, Python
 
-
-## Appendix
-
-Any additional information goes here
-
-
-## 🚀 About Me
-I'm a full stack developer...
 
