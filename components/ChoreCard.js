@@ -18,7 +18,7 @@ export default function ChoreCard({ obj, onUpdate }) {
   };
   return (
     <Card className="chore-card">
-      <Card.Img variant="top" src={obj.photo_url} />
+      <Card.Img variant="top" className="chore-card-image" src={obj.photo_url} />
       <Card.Body>
         <Card.Title>{obj.name}</Card.Title>
         <Card.Text>{obj.description}</Card.Text>
