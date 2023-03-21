@@ -90,38 +90,38 @@ export default function ChoreForm({ obj, categories, householdUsers }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="item-form">
-      <h1 className="item-form-h1">{obj.id ? 'Edit' : 'Add'} Chore</h1>
-      <FormGroup controlId="form.Input1" className="item-form-input">
-        <FloatingLabel label="Chore Name" className="mb-3">
-          <Form.Control type="text" placeholder="Enter Chore Name" name="name" value={formInput.name} onChange={handleChange} required />
-        </FloatingLabel>
-      </FormGroup>
-      <FormGroup controlId="form.Input2" className="item-form-input">
-        <FloatingLabel label="Chore Description" className="mb-3">
-          <Form.Control type="text" placeholder="Enter Chore Description" name="description" value={formInput.description} onChange={handleChange} required />
-        </FloatingLabel>
-      </FormGroup>
-      <FormGroup controlId="form.Input3" className="item-form-input">
-        <FloatingLabel label="Chore Frequency" className="mb-3">
-          <Form.Control type="text" placeholder="Enter Chore Frequency" name="frequency" value={formInput.frequency} onChange={handleChange} required />
-        </FloatingLabel>
-      </FormGroup>
-      <FormGroup controlId="form.Input3" className="item-form-input">
-        <FloatingLabel label="Chore Priority" className="mb-3">
-          <Form.Control type="text" placeholder="Enter Chore Priority" name="priority" value={formInput.priority} onChange={handleChange} required />
-        </FloatingLabel>
-      </FormGroup>
-      <FormGroup controlId="form.Input3" className="item-form-input">
-        <FloatingLabel label="Chore Photo" className="mb-3">
-          <Form.Control type="text" placeholder="Enter Chore Photo URL" name="photo_url" value={formInput.photo_url} onChange={handleChange} required />
-        </FloatingLabel>
-      </FormGroup>
-      <FormGroup controlId="floatingSelect" className="item-form-input">
-        <FormLabel>Category</FormLabel>
-        <Select aria-label="member select" name="category" value={formInput.category} options={optionsForSelect} isMulti onChange={handleSelect} placeholder="Category" />
-      </FormGroup>
-      <FloatingLabel label="Chore Owner" className="mb-3">
+    <div className="form-div">
+      <Form onSubmit={handleSubmit} className="item-form">
+        <h1 className="item-form-h1">{obj.id ? 'Edit' : 'Add'} Chore</h1>
+        <FormGroup controlId="form.Input1" className="item-form-input">
+          <FloatingLabel label="Chore Name" className="mb-3">
+            <Form.Control type="text" placeholder="Enter Chore Name" name="name" value={formInput.name} onChange={handleChange} required />
+          </FloatingLabel>
+        </FormGroup>
+        <FormGroup controlId="form.Input2" className="item-form-input">
+          <FloatingLabel label="Chore Description" className="mb-3">
+            <Form.Control type="text" placeholder="Enter Chore Description" name="description" value={formInput.description} onChange={handleChange} required />
+          </FloatingLabel>
+        </FormGroup>
+        <FormGroup controlId="form.Input3" className="item-form-input">
+          <FloatingLabel label="Chore Frequency" className="mb-3">
+            <Form.Control type="text" placeholder="Enter Chore Frequency" name="frequency" value={formInput.frequency} onChange={handleChange} required />
+          </FloatingLabel>
+        </FormGroup>
+        <FormGroup controlId="form.Input3" className="item-form-input">
+          <FloatingLabel label="Chore Priority" className="mb-3">
+            <Form.Control type="text" placeholder="Enter Chore Priority" name="priority" value={formInput.priority} onChange={handleChange} required />
+          </FloatingLabel>
+        </FormGroup>
+        <FormGroup controlId="form.Input3" className="item-form-input">
+          <FloatingLabel label="Chore Photo" className="mb-3">
+            <Form.Control type="text" placeholder="Enter Chore Photo URL" name="photo_url" value={formInput.photo_url} onChange={handleChange} required />
+          </FloatingLabel>
+        </FormGroup>
+        <FormGroup controlId="floatingSelect" className="item-form-input">
+          <FormLabel>Category</FormLabel>
+          <Select aria-label="member select" name="category" value={formInput.category} options={optionsForSelect} isMulti onChange={handleSelect} placeholder="Category" />
+        </FormGroup>
         <Form.Select controlId="floatingSelect" aria-label="owner select" name="owner" onChange={handleChange} className="profile-form-input">
           <option value="">Select an Owner</option>
           {householdUsers?.map((userObj) => (
@@ -130,11 +130,11 @@ export default function ChoreForm({ obj, categories, householdUsers }) {
             </option>
           ))}
         </Form.Select>
-      </FloatingLabel>
-      <div>
-        <Button type="submit">{obj.id ? 'Update' : 'Add New'} Chore</Button>
-      </div>
-    </Form>
+        <Button className="chore-form-button" type="submit">
+          {obj.id ? 'Update' : 'Add New'} Chore
+        </Button>
+      </Form>
+    </div>
   );
 }
 
