@@ -71,20 +71,22 @@ export default function HouseholdForm({ obj, allUsers }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="item-form">
-      <h1 className="item-form-h1">{obj.id ? 'Edit' : 'Add'} Household</h1>
-      <FormGroup controlId="form.Input1" className="item-form-input">
-        <FloatingLabel label="Household Name" className="mb-3">
-          <Form.Control type="text" placeholder="Enter Household Name" name="name" value={formInput.name} onChange={handleChange} required />
-        </FloatingLabel>
-      </FormGroup>
-      <FormGroup controlId="floatingSelect" className="item-form-input">
-        <Select aria-label="member select" name="users" value={formInput.users} isMulti options={optionsForSelect} onChange={handleSelect} required />
-      </FormGroup>
-      <div>
-        <Button type="submit">{obj.id ? 'Update' : 'Add New'} Household</Button>
-      </div>
-    </Form>
+    <div className="form-div">
+      <Form onSubmit={handleSubmit} className="item-form">
+        <h1 className="item-form-h1">{obj.id ? 'Edit' : 'Add'} Household</h1>
+        <FormGroup controlId="form.Input1" className="item-form-input">
+          <FloatingLabel label="Household Name" className="mb-3">
+            <Form.Control type="text" placeholder="Enter Household Name" name="name" value={formInput.name} onChange={handleChange} required />
+          </FloatingLabel>
+        </FormGroup>
+        <FormGroup controlId="floatingSelect" className="item-form-input">
+          <Select aria-label="member select" name="users" value={formInput.users} isMulti options={optionsForSelect} onChange={handleSelect} required />
+        </FormGroup>
+        <Button type="submit" className="chore-form-button">
+          {obj.id ? 'Update' : 'Add New'} Household
+        </Button>
+      </Form>
+    </div>
   );
 }
 
